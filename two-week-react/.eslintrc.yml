@@ -1,9 +1,8 @@
-parser: "babel-eslint"
+parser: 'babel-eslint'
 env:
   browser: true
   es6: true
-extends:
- ["eslint:recommended", "airbnb", "prettier"]
+extends: ['eslint:recommended', 'airbnb', 'prettier']
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -14,13 +13,16 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {
-  "react/prefer-stateless-function": 0,
-  "react/jsx-filename-extension": 0,
-  "react/jsx-one-expression-per-line": 0,
-  "react/state-in-constructor": 1,
-  "react/destructuring-assignment": 1,
-  "react/no-access-state-in-setstate": 1,
-  "react/prop-types": 1,
-  "no-console": "off"
-}
+rules:
+  {
+    'react/prefer-stateless-function': 0,
+    'react/jsx-filename-extension': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react/state-in-constructor': 1,
+    'react/destructuring-assignment': 1,
+    'react/no-access-state-in-setstate': 1,
+    'react/prop-types': 1,
+    'react/eslint-disable-next-line': 0,
+    'no-unused-vars': 1,
+    'no-console': 'off',
+  }
