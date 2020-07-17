@@ -1,9 +1,12 @@
-import React from 'react'
-import './App.css'
-import Count from './Count'
+import React, { Component } from 'react';
 
-function App() {
-  return <Count />
+import './App.css';
+import Count from './Count';
+
+class App extends Component {
+  render() {
+    return <Count />;
+  }
 }
 
-export default App
+export default App;
