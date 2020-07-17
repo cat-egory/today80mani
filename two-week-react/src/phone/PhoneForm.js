@@ -10,9 +10,20 @@ class PhoneForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSummit = (e) => {
+    e.preventDefault();
+
+    this.props.onCreate(this.state);
+
+    this.setState({
+      name: '',
+      phone: '',
+    });
+  };
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSummit}>
         <input
           placeholder="name"
           value={this.state.name}
@@ -27,6 +38,8 @@ class PhoneForm extends Component {
         />
         <h2>{this.state.name}</h2>
         <h2>{this.state.phone}</h2>
+
+        <button type="submit"> regist</button>
       </form>
     );
   }

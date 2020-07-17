@@ -5,10 +5,14 @@ import './App.css';
 import PhoneForm from './phone/PhoneForm';
 
 class App extends Component {
+  handleCreate = (data) => {
+    console.log('dd:', data);
+  };
+
   render() {
     return (
       <div>
-        <PhoneForm />
+        <PhoneForm onCreate={this.handleCreate} />
       </div>
     );
   }
