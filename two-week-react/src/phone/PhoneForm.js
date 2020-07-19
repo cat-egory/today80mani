@@ -36,8 +36,6 @@ class PhoneForm extends Component {
           name="phone"
           onChange={this.handleChange}
         />
-        <h2>{this.state.name}</h2>
-        <h2>{this.state.phone}</h2>
 
         <button type="submit"> regist</button>
       </form>

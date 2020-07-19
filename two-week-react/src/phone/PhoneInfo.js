@@ -11,12 +11,12 @@ class PhoneInfo extends Component {
 
   render() {
     const style = {
-      border: '1px solid border',
+      border: '1px solid black',
       padding: '8px',
       margin: '8px',
     };
 
-    const { name, phone, id } = this.props.info;
+    const { name, phone } = this.props.info;
 
     return (
       <div style={style}>
