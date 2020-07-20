@@ -23,10 +23,18 @@ class App extends Component {
   };
 
   handleCreate = (data) => {
-    console.log('dd:', data);
+    console.log('create dd:', data);
     const { information } = this.state;
     this.setState({
       information: information.concat({ id: (this.id += 1), ...data }),
+    });
+  };
+
+  handleRemove = (data) => {
+    console.log('remove dd:', data);
+    const { information } = this.state;
+    this.setState({
+      information: information.filter((info) => info.id !== data.id),
     });
   };
 
