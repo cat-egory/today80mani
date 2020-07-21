@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate} />
-        <PhoneInfoList data={information} />
+        <PhoneInfoList data={information} onRemove={this.handleRemove} />
       </div>
     );
   }
