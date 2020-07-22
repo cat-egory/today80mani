@@ -38,13 +38,27 @@ class App extends Component {
     });
   };
 
+  handleUpdate = (data) => {
+    console.log('change uu:', data);
+    const { information } = this.stata;
+    this.setState({
+      information: information.map((info) =>
+        info.id === data.id ? { ...info, ...data } : info
+      ),
+    });
+  };
+
   render() {
     const { information } = this.state;
 
     return (
       <div>
         <PhoneForm onCreate={this.handleCreate} />
-        <PhoneInfoList data={information} onRemove={this.handleRemove} />
+        <PhoneInfoList
+          data={information}
+          onRemove={this.handleRemove}
+          onUpdate={this.handleUpdate}
+        />
       </div>
     );
   }

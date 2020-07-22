@@ -14,6 +14,11 @@ class PhoneInfo extends Component {
     onRemove(info);
   };
 
+  handleUpdate = () => {
+    const { info, onUpdate } = this.props;
+    onUpdate(info);
+  };
+
   render() {
     const style = {
       border: '1px solid black',
