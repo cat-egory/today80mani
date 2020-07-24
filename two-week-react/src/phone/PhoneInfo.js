@@ -9,14 +9,44 @@ class PhoneInfo extends Component {
     },
   };
 
+  state = {
+    editing: false,
+    name: '',
+    phone: '',
+  };
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { info, onUpdate } = this.props;
+    if (!prevState.editing && this.state.editing) {
+      this.setState({
+        id: info.id,
+        name: info.name,
+        phone: info.phone,
+      });
+    }
+
+    if (prevState.editing && !this.state.editing) {
+      onUpdate(this.state);
+    }
+  }
+
   handleRemove = () => {
     const { info, onRemove } = this.props;
     onRemove(info);
   };
 
-  handleUpdate = () => {
-    const { info, onUpdate } = this.props;
-    onUpdate(info);
+  handleToggleEdit = () => {
+    const { editing } = this.state;
+    this.setState({
+      editing: !editing,
+    });
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
@@ -26,14 +56,48 @@ class PhoneInfo extends Component {
       margin: '8px',
     };
 
-    const { name, phone } = this.props.info;
+    const { editing } = this.state;
+
+    if (editing) {
+      return (
+        <div style={style}>
+          <input
+            placeholder="name"
+            value={this.state.name}
+            name="name"
+            onChange={this.handleChange}
+          />
+          <input
+            placeholder="phone"
+            value={this.state.phone}
+            name="phone"
+            onChange={this.handleChange}
+          />
+
+          <button type="button" onClick={this.handleToggleEdit}>
+            do update!
+          </button>
+          <button type="button" onClick={this.handleRemove}>
+            do remove!
+          </button>
+        </div>
+      );
+    }
+
+    const { id, name, phone } = this.props.info;
 
     return (
       <div style={style}>
         <div>
+          <b>{id}</b>
+        </div>
+        <div>
           <b>{name}</b>
         </div>
         <div>{phone}</div>
+        <button type="button" onClick={this.handleToggleEdit}>
+          update!
+        </button>
         <button type="button" onClick={this.handleRemove}>
           remove!
         </button>

@@ -5,7 +5,7 @@ import PhoneForm from './phone/PhoneForm';
 import PhoneInfoList from './phone/PhoneInfoList';
 
 class App extends Component {
-  id = 2;
+  id = 1;
 
   state = {
     information: [
@@ -40,7 +40,7 @@ class App extends Component {
 
   handleUpdate = (data) => {
     console.log('change uu:', data);
-    const { information } = this.stata;
+    const { information } = this.state;
     this.setState({
       information: information.map((info) =>
         info.id === data.id ? { ...info, ...data } : info
@@ -50,6 +50,7 @@ class App extends Component {
 
   render() {
     const { information } = this.state;
+    console.log('information:', information);
 
     return (
       <div>
