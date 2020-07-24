@@ -8,7 +8,13 @@ class PhoneInfoList extends Component {
     onUpdate: () => console.log('change --!'),
   };
 
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return nextProps.data !== this.props.data;
+  }
+
   render() {
+    console.log('PhoneInfoList');
+
     const { data } = this.props;
     const list = data.map((info) => (
       <PhoneInfo
