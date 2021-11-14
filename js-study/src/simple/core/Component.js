@@ -1,4 +1,4 @@
-import { observe, observable } from './observer';
+import { observe, observable } from './observer.js';
 
 export class Component {
     state;
