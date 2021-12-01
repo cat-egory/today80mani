@@ -1,35 +1,25 @@
 import { observable } from './observer.js';
 
-export class Store {
-    #state;
-    #mutations;
-    #actions;
-    state = {};
+export const createStore = (reducer) => {
+    const state = observable(reducer());
 
-    constructor({ state, mutations, actions }) {
-        this.#state = observable(state);
-        this.#mutations = mutations;
-        this.#actions = actions;
-
-        Object.keys(state).forEach((key) => {
-            Object.defineProperty(this.state, key, {
-                get: () => this.#state[key],
-            });
+    const frozenState = {};
+    Object.keys(state).forEach((key) => {
+        Object.defineProperty(frozenState, key, {
+            get: () => state[key],
         });
-    }
+    });
 
-    commit(action, payload) {
-        this.#mutations[action](this.#state, payload);
-    }
+    const dispatch = (action) => {
+        const newState = reducer(state, action);
 
-    dispatch(action, payload) {
-        return this.#actions[action](
-            {
-                state: this.#state,
-                commit: this.commit.bind(this),
-                dispatch: this.dispatch.bind(this),
-            },
-            payload
-        );
-    }
-}
+        for (const [key, value] of Object.entries(newState)) {
+            if (!state[key]) continue;
+            state[key] = value;
+        }
+    };
+
+    const getState = () => frozenState;
+
+    return { getState, dispatch };
+};
