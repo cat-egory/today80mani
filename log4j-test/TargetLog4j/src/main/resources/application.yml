@@ -1,0 +1,11 @@
+logging:
+  config: classpath:log4j2-spring.xml # 로그설정파일
+
+server:
+  port: 8090 # 서버 포트 변경
+
+spring:
+  http:
+    output:
+      ansi:
+        enabled: always
