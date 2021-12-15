@@ -15,9 +15,8 @@ public class HelloController {
 
     @RequestMapping("/test")
     public String index(HttpServletRequest request) {
-        String userAgent = request.getHeader("User-Agent");
 
-        log.info("An INFO Message {}", userAgent);
+        log.info("An INFO Message {}", request.getHeader("User-Agent"));
 
         return "Howdy! Check out the Logs to see the output...";
     }
