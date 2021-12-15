@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class HelloController {
 
@@ -12,12 +14,10 @@ public class HelloController {
 
 
     @RequestMapping("/test")
-    public String index() {
-        log.trace("A TRACE Message");
-        log.debug("A DEBUG Message");
-        log.info("An INFO Message");
-        log.warn("A WARN Message");
-        log.error("An ERROR Message");
+    public String index(HttpServletRequest request) {
+        String userAgent = request.getHeader("User-Agent");
+
+        log.info("An INFO Message {}", userAgent);
 
         return "Howdy! Check out the Logs to see the output...";
     }
