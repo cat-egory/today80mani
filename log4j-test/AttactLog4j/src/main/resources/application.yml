@@ -1,0 +1,9 @@
+
+server:
+  port: 8099 # 서버 포트 변경
+
+spring:
+  http:
+    output:
+      ansi:
+        enabled: always
