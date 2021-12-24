@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user/{id}', [UserController::class, 'show']);
+//Route::get('user/{id}', [UserController::class, 'show']);
+//Route::get('user', [UserController::class, 'index']);
+Route::resource('user', UserController::class);
