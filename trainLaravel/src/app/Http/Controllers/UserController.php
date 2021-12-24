@@ -10,17 +10,14 @@ class UserController extends Controller
         return view('user.profile', ['user' => 'AAAAA' . $id]);
     }
     public function index() {
-        $collection = collect([1,2,3]);
+        $path = base_path('/database/sample/data.json');
+        $file = file_get_contents($path);
+        $jsonFile = json_decode($file, true);
 
-        $tempUser = $collection->map( function ($item, $key) {
-            return [
-                'id'=> $item, 'name'=> '어제의 그녀'.$item, 'position'=> '<supervisor'.$item.'>'
-            ];
-        });
+//        dd(array_key_exists('userList', $jsonFile), isset($jsonFile['userList']));
+//        dd($jsonFile['userList']);
 
-//        dd($tempUser);
-
-        return view('user.index', ['userList' => $tempUser]);
+        return view('user.index', ['userList' => $jsonFile['userList']]);
 
     }
 
