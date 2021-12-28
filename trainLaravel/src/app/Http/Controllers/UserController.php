@@ -12,12 +12,12 @@ class UserController extends Controller
     public function index() {
         $path = base_path('/database/sample/data.json');
         $file = file_get_contents($path);
-        $jsonFile = json_decode($file, true);
+        $jsonFile = json_decode($file, false,);
 
 //        dd(array_key_exists('userList', $jsonFile), isset($jsonFile['userList']));
-//        dd($jsonFile['userList']);
+//        dd($jsonFile->userList);
 
-        return view('user.index', ['userList' => $jsonFile['userList']]);
+        return view('user.index', ['userList' =>$jsonFile->userList]);
 
     }
 
