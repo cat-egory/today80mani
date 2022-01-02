@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -21,3 +22,4 @@ Route::get('/', function () {
 //Route::get('user/{id}', [UserController::class, 'show']);
 //Route::get('user', [UserController::class, 'index']);
 Route::resource('user', UserController::class);
+Route::resource('movie', MovieController::class);
